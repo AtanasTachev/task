@@ -1,0 +1,21 @@
+.login__button{
+    color: #0b0c0c;
+    background-color: azure;
+    padding: 1rem;
+    border: 1px solid black;
+    font-size: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    position: absolute;
+    top:calc(50% - 1rem) ;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  button {
+      background-color: none;
+      text-decoration: none;
+  }
+  a {
+      text-decoration: none;
+      color: #0b0c0c;
+  }
