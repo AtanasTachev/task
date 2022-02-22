@@ -9,6 +9,7 @@
     position: absolute;
     top:calc(50% - 1rem) ;
     vertical-align: middle;
+    left: 50%;
     cursor: pointer;
   }
   button {

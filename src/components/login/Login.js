@@ -1,7 +1,8 @@
 import './login.css'
 import React from "react";
 import { GoogleLogin } from 'react-google-login';
-const clientId = '415229235264-luri6la7g3qnf2ii89jj2limf6g52n9m.apps.googleusercontent.com';
+const clientId = '415229235264-hodh11mdmqdi1dag1kiugrhnr7uv3sjf.apps.googleusercontent.com';
+            
 
 
 const LoginButton = () => {
