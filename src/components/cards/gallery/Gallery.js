@@ -15,13 +15,13 @@ const Gallery = () => {
     }, []);
 
     const allImages = cards.message;
-    console.log(cards.message);
+    // console.log(allImages);
 
     return (
         <>
         <input className='input' placeholder='search'></input>
         <ul className='container'>
-            {allImages.map(x => <SingleCard key={x} card={x} />)}
+            {allImages?.map(x => <SingleCard key={x} card={x} />)}
         </ul>
         </>
     )
