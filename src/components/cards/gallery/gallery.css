@@ -8,6 +8,14 @@ input.input {
 }
 
 ul.container {
+    padding: 2rem;
+    position: absolute;
+    top: 12vh;
+    width: 100vw;
+    height: 90vh;
     display: grid;
-    
+    list-style: none;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-rows: 30% 30% 30% 30%;
+    justify-content: space-evenly;
 }

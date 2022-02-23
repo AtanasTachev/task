@@ -1,4 +1,27 @@
 li.single {
-    height: 15%;
-    width: 15%;
+    height: 22vh;
+    width: 20vw;
+    background-color: antiquewhite;
+    border-radius: 0.5rem;
+    position: relative;
+    /* display: flex;
+    flex-direction: column; */
+}
+img {
+    margin-top: 0.5rem;
+    aspect-ratio: initial;
+    max-width: 90%;
+    max-height: 65%;
+    width: auto;
+    height: auto;
+}
+li.single h3 {
+    position: relative;
+    margin-top: 0.15rem;
+    padding: 0;
+    margin: 0;
+}
+li.single p {
+    position: relative;
+    margin-top: 0.05rem;
 }
