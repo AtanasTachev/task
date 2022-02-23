@@ -1,0 +1,13 @@
+input.input {
+    font-size: 1.5rem;
+    top: 3rem;
+    position: absolute;
+    left: 50%;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+ul.container {
+    display: grid;
+    
+}
