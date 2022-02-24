@@ -2,28 +2,34 @@ import './gallery.css';
 import SingleCard from '../singleCard/SingleCard';
 import { useEffect, useState } from 'react';
 
-import * as cardServise from '../../../services/cardService'
+import * as cardServise from '../../../services/cardService';
+// import * as userServise from '../../../services/userService';
+
 
 const Gallery = () => {
-    const [firstHalf, setfFirstHalf] = useState([]);
-    const [secondHalf, setSecondHalf] = useState([]);
+    const [elephants, setElephants] = useState([]);
+    // const [secondHalf, setSecondHalf] = useState([]);
+    // const [user, setUser] = useState();
 
 
     useEffect(() => {
-        cardServise.getHalf()
+        cardServise.getElephants()
         .then(result => {
-            setfFirstHalf(result);
+            setElephants(result);
         })
     }, []);
-    useEffect(() => {
-        cardServise.getHalf()
-        .then(result => {
-            setSecondHalf(result);
-        })
-    }, []);
+    // useEffect(() => {
+    //     cardServise.getHalf()
+    //     .then(result => {
+    //         setSecondHalf(result);
+    //     })
+    // }, []);
 
-    const allAnimals = firstHalf.concat(secondHalf);
-    // console.log(allAnimals);
+ 
+
+    // const allAnimals = firstHalf.concat(secondHalf);
+    console.log(elephants);
+    // console.log(user);
 
     return (
         <>
@@ -35,7 +41,7 @@ const Gallery = () => {
             <button className='search'>search</button>
         </div>
         <ul className='container'>
-            {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
+            {elephants?.map(x => <SingleCard key={x.id} animal={x} />)}
         </ul>
         </>
     )
