@@ -1,12 +1,12 @@
-const baseUrl = 'https://elephant-api.herokuapp.com/elephants';
+const baseUrl = 'https://zoo-animal-api.herokuapp.com';
 
-export const getElephants = async () => {
+export const getHalf = async () => {
     try {
-        let response = await fetch(baseUrl, {mode:'no-cors'});
-        console.log(response);
-        let elephants = await response.json();
-        console.log(elephants);
-        return elephants;
+        let response = await fetch(`${baseUrl}/animals/rand/8`, {mode:'cors'});
+        // console.log(response);
+        let animals = await response.json();
+        // console.log(animals);
+        return animals;
     } catch (error) {
         console.log({message: error.message});
     }

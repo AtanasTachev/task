@@ -7,28 +7,28 @@ import * as cardServise from '../../../services/cardService';
 
 
 const Gallery = () => {
-    const [elephants, setElephants] = useState([]);
-    // const [secondHalf, setSecondHalf] = useState([]);
+    const [firstHalf, setFirstHalf] = useState([]);
+    const [secondHalf, setSecondHalf] = useState([]);
     // const [user, setUser] = useState();
 
 
     useEffect(() => {
-        cardServise.getElephants()
+        cardServise.getHalf()
         .then(result => {
-            setElephants(result);
+            setFirstHalf(result);
         })
     }, []);
-    // useEffect(() => {
-    //     cardServise.getHalf()
-    //     .then(result => {
-    //         setSecondHalf(result);
-    //     })
-    // }, []);
+    useEffect(() => {
+        cardServise.getHalf()
+        .then(result => {
+            setSecondHalf(result);
+        })
+    }, []);
 
  
 
-    // const allAnimals = firstHalf.concat(secondHalf);
-    console.log(elephants);
+    const allAnimals = firstHalf.concat(secondHalf);
+    console.log(allAnimals);
     // console.log(user);
 
     return (
@@ -41,7 +41,7 @@ const Gallery = () => {
             <button className='search'>search</button>
         </div>
         <ul className='container'>
-            {elephants?.map(x => <SingleCard key={x.id} animal={x} />)}
+            {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
         </ul>
         </>
     )

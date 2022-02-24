@@ -1,11 +1,15 @@
 import './login.css'
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { GoogleLogin } from 'react-google-login';
+import { AuthContext } from '../../contexts/AuthContext';
+
 const clientId = '415229235264-hodh11mdmqdi1dag1kiugrhnr7uv3sjf.apps.googleusercontent.com';
             
 
-
 const LoginButton = () => {
+
+  const { login } = useContext(AuthContext); 
+
   const onSuccess = (res) => {
     console.log('[Login Success] currentUser:', res.profileObj);
   };
