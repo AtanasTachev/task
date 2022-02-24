@@ -1,5 +1,6 @@
 li.single {
-    height: 22vh;
+    max-height: 29vh;
+    padding: 0.5rem;
     width: 20vw;
     background-color: antiquewhite;
     border-radius: 0.5rem;
@@ -10,18 +11,23 @@ li.single {
 img {
     margin-top: 0.5rem;
     aspect-ratio: initial;
+    padding: 0;
+    margin: 0;
     max-width: 90%;
-    max-height: 65%;
+    max-height: 60%;
     width: auto;
     height: auto;
 }
-li.single h3 {
-    position: relative;
-    margin-top: 0.15rem;
+li.single h3.title {
     padding: 0;
     margin: 0;
+    font-size: 1.25rem;
 }
-li.single p {
+li.single p.description {
     position: relative;
     margin-top: 0.05rem;
+    font-size: 0.75rem;
+    margin: 0;
+    padding: 0;
 }
+

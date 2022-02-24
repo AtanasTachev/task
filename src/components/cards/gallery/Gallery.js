@@ -23,11 +23,14 @@ const Gallery = () => {
     }, []);
 
     const allAnimals = firstHalf.concat(secondHalf);
-    console.log(allAnimals);
+    // console.log(allAnimals);
 
     return (
         <>
-        <input className='input' placeholder='search'></input>
+        <div className='searchbar'>
+            <input className='input' placeholder='mon...'></input>
+            <button className='search'>search</button>
+        </div>
         <ul className='container'>
             {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
         </ul>
