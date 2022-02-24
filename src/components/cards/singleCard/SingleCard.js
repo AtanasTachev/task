@@ -1,13 +1,13 @@
 import './singleCard.css';
 
-const SingleCard = ({card}) => {
+const SingleCard = ({animal}) => {
 // console.log(card);
     return (
         <li className='single'>
-            <img src={card} />
-            <h3>kfhk</h3>
+            <img src={animal.image_link} />
+            <h3>{animal.name}</h3>
             <p>
-                fhdfghfdghdfhdf
+                Latin name: {animal.latin_name}
             </p>
         </li>
     )

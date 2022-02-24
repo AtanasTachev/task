@@ -1,7 +1,7 @@
-const baseUrl = 'https://dog.ceo/api/breeds/image';
+const baseUrl = 'https://zoo-animal-api.herokuapp.com';
 
-export const getAll = async () => {
-    let response = await fetch(`${baseUrl}/random/16`)
+export const getHalf = async () => {
+    let response = await fetch(`${baseUrl}/animals/rand/8`)
     let cards = await response.json();
     return cards;
 };

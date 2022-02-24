@@ -5,23 +5,31 @@ import { useEffect, useState } from 'react';
 import * as cardServise from '../../../services/cardService'
 
 const Gallery = () => {
-    const [cards, setCards] = useState([]);
+    const [firstHalf, setfFirstHalf] = useState([]);
+    const [secondHalf, setSecondHalf] = useState([]);
+
 
     useEffect(() => {
-        cardServise.getAll()
+        cardServise.getHalf()
         .then(result => {
-            setCards(result);
+            setfFirstHalf(result);
+        })
+    }, []);
+    useEffect(() => {
+        cardServise.getHalf()
+        .then(result => {
+            setSecondHalf(result);
         })
     }, []);
 
-    const allImages = cards.message;
-    // console.log(allImages);
+    const allAnimals = firstHalf.concat(secondHalf);
+    console.log(allAnimals);
 
     return (
         <>
         <input className='input' placeholder='search'></input>
         <ul className='container'>
-            {allImages?.map(x => <SingleCard key={x} card={x} />)}
+            {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
         </ul>
         </>
     )
