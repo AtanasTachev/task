@@ -71,3 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 resourse about redirect after google login
 https://stackoverflow.com/questions/48983374/handle-google-callback-response-on-reactjs
+
+how to get google id with google login
+https://codeat21.com/login-with-google-account-using-react-and-node-js/
