@@ -27,6 +27,9 @@ const Gallery = () => {
 
     return (
         <>
+        <header className='name'>
+            <p className='user'>Name</p>
+        </header>
         <div className='searchbar'>
             <input className='input' placeholder='mon...'></input>
             <button className='search'>search</button>

@@ -1,3 +1,19 @@
+header.name {
+    height: 4rem;
+    position: absolute;
+    width: 100vw;
+    background-color: rgba(85, 83, 80, 0.835);
+    top: 0;
+    display: flex;
+    justify-content: end;
+}
+
+p.user {
+    color: azure; 
+    position: relative;
+    margin-right: 3rem;
+    font-size: 1.25rem;
+}
 
 ul.container {
     padding: 2rem;
@@ -16,7 +32,7 @@ div.searchbar {
     display: flex;
     flex-direction: row;
     justify-items: auto;
-    top: 3rem;
+    top: 5rem;
     left: 35%;
     position: absolute;
 }
@@ -34,6 +50,7 @@ button.search {
     border-radius: 1rem;
     background-color: aquamarine;
     cursor: pointer;
+    margin-left: 1rem;
 }
 button.search:hover {
 background-color: rgb(3, 246, 173);
