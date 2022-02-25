@@ -7,27 +7,36 @@ import * as cardServise from '../../../services/cardService';
 
 
 const Gallery = () => {
-    const [firstHalf, setFirstHalf] = useState([]);
-    const [secondHalf, setSecondHalf] = useState([]);
+    const [allAnimals, setAllAnimals] = useState([]);
+
+    // const [firstHalf, setFirstHalf] = useState([]);
+    // const [secondHalf, setSecondHalf] = useState([]);
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
     // const [user, setUser] = useState();
 
-
     useEffect(() => {
-        cardServise.getHalf()
+        cardServise.getAll()
         .then(result => {
-            setFirstHalf(result);
-        })
-    }, []);
-    useEffect(() => {
-        cardServise.getHalf()
-        .then(result => {
-            setSecondHalf(result);
+            setAllAnimals(result);
         })
     }, []);
 
-    const allAnimals = firstHalf.concat(secondHalf);
+
+    // useEffect(() => {
+    //     cardServise.getHalf()
+    //     .then(result => {
+    //         setFirstHalf(result);
+    //     })
+    // }, []);
+    // useEffect(() => {
+    //     cardServise.getHalf()
+    //     .then(result => {
+    //         setSecondHalf(result);
+    //     })
+    // }, []);
+
+    // const allAnimals = firstHalf.concat(secondHalf);
     
     // let filtered = [];
     
@@ -50,44 +59,49 @@ const Gallery = () => {
         let result = foundByName.concat(foundByLatinName, foundByAnimalType, foundByDiet);
         setFound(result);
     }
-        // const regex = new RegExp(inputText, 'g', 'i');
-        // found = animalsText.map(x => regex.exec(x));
-        // console.log(animalsText[0]);
-        // found.filter(x => x !== null);
-        // console.log(found);
-        // found = animalsText[0].filter(x => x.includes(inputText));
-        // filtered = result;
-        // found = animalsText.filter(x => x.includes(inputText))
-    
-
+  
     console.log(inputText);
     console.log(found);
 
-
-    // console.log(allAnimals);
-    // console.log(user);
-    
-    // const searchFunction = () => {
-    // }
-
+    if (found.length > 0) {
     return (
-<>
+    <>
         <header className='name'>
             <p className='user'>Name</p>
         </header>
         <div className='searchbar'>
             <input className='input' placeholder='mon...' onChange={searchHandler}></input>
-            {/* <button className='search' onClick={searchFunction}>search</button> */}
         </div>
   
         <ul className='container'>
-        {found.length>0
-         ? found?.map(x => <SingleCard key={x.id} animal={x} />)
-         : allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)
-        }
+          {found?.map(x => <SingleCard key={x.id} animal={x} />)}
         </ul>
-        </>
-    )
+        </>)
+    } else {
+        return (
+            <>
+                <header className='name'>
+                    <p className='user'>Name</p>
+                </header>
+                <div className='searchbar'>
+                    <input className='input' placeholder='mon...' onChange={searchHandler}></input>
+                </div>
+          
+                <ul className='container'>
+                  {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
+                </ul>
+                </>)
+    }
+    //     {/* {found.length>0
+    //     ?(<ul className='container'>
+    //       {found?.map(x => <SingleCard key={x.id} animal={x} />)}
+    //     </ul>)
+    //      : ( <ul className='container'>
+    //          {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
+    //      </ul>)
+    //     } */}
+    // </>
+    // )
 };
 
 export default Gallery;
