@@ -10,6 +10,7 @@ const Gallery = () => {
     const [firstHalf, setFirstHalf] = useState([]);
     const [secondHalf, setSecondHalf] = useState([]);
     const [inputText, setInputText] = useState('');
+    const [found, setFound] = useState([]);
     // const [user, setUser] = useState();
 
 
@@ -28,18 +29,27 @@ const Gallery = () => {
 
     const allAnimals = firstHalf.concat(secondHalf);
     
-    let filtered = [];
+    // let filtered = [];
     
-    let animalsText = allAnimals?.map(x => x.name.toLowerCase() + x.latin_name.toLowerCase() + x.animal_type.toLowerCase() + x.diet.toLowerCase());
+    // let animalsText = allAnimals?.map(x => x.name.toLowerCase() + x.latin_name.toLowerCase() + x.animal_type.toLowerCase() + x.diet.toLowerCase());
 
-   console.log(animalsText);
-   let found = [];
+//    console.log(animalsText);
+//    let found = [];
 
+   if(allAnimals.length > 0) {
+       console.log(allAnimals);
+   }
     const searchHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
+        let foundByName = allAnimals?.filter(x => {return x.name.search(inputText) != -1 } );
+        let foundByLatinName = allAnimals?.filter(x => {return x.latin_name.search(inputText) != -1 } );
+        let foundByAnimalType = allAnimals?.filter(x => {return x.animal_type.search(inputText) != -1 } );
+        let foundByDiet = allAnimals?.filter(x => {return x.diet.search(inputText) != -1 } );
 
-        found = animalsText.filter(x => {return x.search(inputText) != -1})
+        let result = foundByName.concat(foundByLatinName, foundByAnimalType, foundByDiet);
+        setFound(result);
+    }
         // const regex = new RegExp(inputText, 'g', 'i');
         // found = animalsText.map(x => regex.exec(x));
         // console.log(animalsText[0]);
@@ -48,7 +58,7 @@ const Gallery = () => {
         // found = animalsText[0].filter(x => x.includes(inputText));
         // filtered = result;
         // found = animalsText.filter(x => x.includes(inputText))
-    }
+    
 
     console.log(inputText);
     console.log(found);
@@ -71,8 +81,8 @@ const Gallery = () => {
         </div>
   
         <ul className='container'>
-        {filtered.length>0
-         ? filtered?.map(x => <SingleCard key={x.id} animal={x} />)
+        {found.length>0
+         ? found?.map(x => <SingleCard key={x.id} animal={x} />)
          : allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)
         }
         </ul>
