@@ -27,7 +27,6 @@ ul.container {
     grid-template-rows: 30% 30% 30% 30%;
     justify-content: space-evenly;
     gap: 0.5rem;
-    /* overflow: hidden; */
 }
 div.searchbar {
     display: flex;
