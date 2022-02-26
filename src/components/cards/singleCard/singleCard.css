@@ -25,9 +25,17 @@ li.single h3.title {
 }
 li.single p.description {
     position: relative;
+    height: 30%;
     margin-top: 0.05rem;
     font-size: 0.75rem;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    cursor: pointer;
 }
 
+li.single p.description:hover {
+    background-color: bisque;
+    z-index: 10;
+    overflow: auto;
+}

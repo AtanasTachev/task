@@ -2,9 +2,10 @@ import './singleCard.css';
 
 const SingleCard = ({film}) => {
 
+    
     let descriptionArray = film.description.split('.');
-
-    let twoSentences = descriptionArray.slice(0,2).join('.');
+    // console.log(descriptionArray);
+    let twoSentences = descriptionArray.slice(0,2).map(x => x + '.').join('');
 
     return (
         <li className='single'>
