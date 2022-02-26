@@ -1,19 +1,19 @@
 import './singleCard.css';
 
-const SingleCard = ({animal}) => {
+const SingleCard = ({film}) => {
+
+    let descriptionArray = film.description.split('.');
+
+    let twoSentences = descriptionArray.slice(0,2).join('.');
+
     return (
         <li className='single'>
-            <img src={animal.image_link} />
-            <h3 className='title'>{animal.name}</h3>
+            <img src={film.image} />
+            <h3 className='title'>{film.title}</h3>
             <p className='description'>
-               <b>Latin name:</b>  {animal.latin_name}
+               <b>Description</b>  {twoSentences}
             </p>
-            <p className='description'>
-                <b>Animal type:</b> {animal.animal_type}
-            </p>
-            <p className='description'>
-                <b>Diet:</b> {animal.diet}
-            </p>
+
         </li>
     )
 

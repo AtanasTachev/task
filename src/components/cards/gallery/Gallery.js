@@ -7,56 +7,34 @@ import * as cardServise from '../../../services/cardService';
 
 
 const Gallery = () => {
-    const [allAnimals, setAllAnimals] = useState([]);
+    const [allFilms, setAllFilms] = useState([]);
 
-    // const [firstHalf, setFirstHalf] = useState([]);
-    // const [secondHalf, setSecondHalf] = useState([]);
+
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
-    // const [user, setUser] = useState();
+    const [user, setUser] = useState();
 
     useEffect(() => {
         cardServise.getAll()
         .then(result => {
-            setAllAnimals(result);
+            setAllFilms(result);
         })
     }, []);
 
+   let sixteenFilms = allFilms.splice(0,16); 
 
-    // useEffect(() => {
-    //     cardServise.getHalf()
-    //     .then(result => {
-    //         setFirstHalf(result);
-    //     })
-    // }, []);
-    // useEffect(() => {
-    //     cardServise.getHalf()
-    //     .then(result => {
-    //         setSecondHalf(result);
-    //     })
-    // }, []);
-
-    // const allAnimals = firstHalf.concat(secondHalf);
-    
-    // let filtered = [];
-    
-    // let animalsText = allAnimals?.map(x => x.name.toLowerCase() + x.latin_name.toLowerCase() + x.animal_type.toLowerCase() + x.diet.toLowerCase());
-
-//    console.log(animalsText);
-//    let found = [];
-
-   if(allAnimals.length > 0) {
-       console.log(allAnimals);
+   if(sixteenFilms.length > 0) {
+       console.log(sixteenFilms);
    }
+
     const searchHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
-        let foundByName = allAnimals?.filter(x => {return x.name.search(inputText) != -1 } );
-        let foundByLatinName = allAnimals?.filter(x => {return x.latin_name.search(inputText) != -1 } );
-        let foundByAnimalType = allAnimals?.filter(x => {return x.animal_type.search(inputText) != -1 } );
-        let foundByDiet = allAnimals?.filter(x => {return x.diet.search(inputText) != -1 } );
+        let foundByTitle = sixteenFilms?.filter(x => {return x.title.search(inputText) != -1 } );
+        let foundByDescription = sixteenFilms?.filter(x => {return x.description.search(inputText) != -1 } );
 
-        let result = foundByName.concat(foundByLatinName, foundByAnimalType, foundByDiet);
+
+        let result = foundByTitle.concat(foundByDescription);
         setFound(result);
     }
   
@@ -65,43 +43,34 @@ const Gallery = () => {
 
     if (found.length > 0) {
     return (
-    <>
-        <header className='name'>
-            <p className='user'>Name</p>
-        </header>
-        <div className='searchbar'>
-            <input className='input' placeholder='mon...' onChange={searchHandler}></input>
-        </div>
-  
-        <ul className='container'>
-          {found?.map(x => <SingleCard key={x.id} animal={x} />)}
-        </ul>
+        <>
+            <header className='name'>
+                <p className='user'>Name</p>
+            </header>
+            <div className='searchbar'>
+                <input className='input' placeholder='mon...' onChange={searchHandler}></input>
+            </div>
+    
+            <ul className='container'>
+            {found?.map(x => <SingleCard key={x.id} film={x} />)}
+            </ul>
         </>)
     } else {
         return (
-            <>
-                <header className='name'>
-                    <p className='user'>Name</p>
-                </header>
-                <div className='searchbar'>
-                    <input className='input' placeholder='mon...' onChange={searchHandler}></input>
-                </div>
-          
-                <ul className='container'>
-                  {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
-                </ul>
-                </>)
+        <>
+            <header className='name'>
+                <p className='user'>Name</p>
+            </header>
+            <div className='searchbar'>
+                <input className='input' placeholder='mon...' onChange={searchHandler}></input>
+            </div>
+        
+            <ul className='container'>
+                {sixteenFilms?.map(x => <SingleCard key={x.id} film={x} />)}
+            </ul>
+        </>)
     }
-    //     {/* {found.length>0
-    //     ?(<ul className='container'>
-    //       {found?.map(x => <SingleCard key={x.id} animal={x} />)}
-    //     </ul>)
-    //      : ( <ul className='container'>
-    //          {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
-    //      </ul>)
-    //     } */}
-    // </>
-    // )
+
 };
 
 export default Gallery;
