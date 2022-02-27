@@ -8,29 +8,16 @@ import * as cardServise from '../../../services/cardService';
 
 
 const Gallery = () => {
-<<<<<<< HEAD
-    const [allArticles, setAllArticles] = useState([]);
-=======
-    const [allFilms, setAllFilms] = useState([]);
-<<<<<<< HEAD
->>>>>>> parent of 96ffc4d (fix search - finally working)
-=======
->>>>>>> parent of 96ffc4d (fix search - finally working)
 
+
+    const [allFilms, setAllFilms] = useState([]);
 
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
-<<<<<<< HEAD
-    // const [user, setUser] = useState();
-=======
+
     const [user, setUser] = useState();
 
-    const forseUpdate = useForceUpdate();
-<<<<<<< HEAD
->>>>>>> parent of 96ffc4d (fix search - finally working)
-=======
->>>>>>> parent of 96ffc4d (fix search - finally working)
-
+    
     useEffect(() => {
         cardServise.getAll()
         .then(result => {
@@ -40,8 +27,7 @@ const Gallery = () => {
 
 
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+
    if(allArticles.length > 0) {
        console.log(allArticles);
    }
@@ -73,7 +59,7 @@ const Gallery = () => {
         </ul>
         </>)
     } else {
-=======
+
     let sixteenFilms = allFilms.slice(0,16); 
     
     if(sixteenFilms.length > 0) {
@@ -81,7 +67,6 @@ const Gallery = () => {
     }
     
     const searchHandler = (e) => {
-=======
     let sixteenFilms = allFilms.slice(0,16); 
     
     if(sixteenFilms.length > 0) {
@@ -89,7 +74,15 @@ const Gallery = () => {
     }
     
     const searchHandler = (e) => {
->>>>>>> parent of 96ffc4d (fix search - finally working)
+
+    let sixteenFilms = allFilms.slice(0,16); 
+    
+    if(sixteenFilms.length > 0) {
+        console.log(sixteenFilms);
+    }
+    
+    const searchHandler = (e) => {
+
         e.preventDefault();
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
@@ -109,18 +102,14 @@ const Gallery = () => {
     console.log(found);
     
     if (found.length > 0) {
-<<<<<<< HEAD
->>>>>>> parent of 96ffc4d (fix search - finally working)
-=======
->>>>>>> parent of 96ffc4d (fix search - finally working)
+
         return (
             <>
                 <header className='name'>
                     <p className='user'>Name</p>
                 </header>
                 <div className='searchbar'>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                     <input className='input' placeholder='...' onChange={searchHandler}></input>
                 </div>
           
@@ -128,10 +117,7 @@ const Gallery = () => {
                   {allArticles?.map(x => <SingleCard key={x.id} article={x} />)}
                 </ul>
                 </>)
-    }
-=======
-=======
->>>>>>> parent of 96ffc4d (fix search - finally working)
+    
                     <input className='input' placeholder='mon...' onChange={searchHandler}></input>
                 </div>
         
@@ -154,7 +140,7 @@ const Gallery = () => {
                 </ul>
             </>)
         }
->>>>>>> parent of 96ffc4d (fix search - finally working)
+>
 
 };
 
