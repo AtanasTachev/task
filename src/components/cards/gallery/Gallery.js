@@ -26,9 +26,7 @@ const Gallery = () => {
     
     let sixteenFilms = allFilms.slice(0,16); 
     
-    if(sixteenFilms.length > 0) {
-        console.log(sixteenFilms);
-    }
+
     
     const searchHandler = (e) => {
         e.preventDefault();
@@ -59,7 +57,7 @@ const Gallery = () => {
                     <p className='user'>Name</p>
                 </header>
                 <div className='searchbar'>
-                    <input className='input' placeholder='mon...' onChange={searchHandler}></input>
+                    <input className='input' placeholder='...' onChange={searchHandler}></input>
                 </div>
         
                 <ul className='container'>
@@ -73,7 +71,7 @@ const Gallery = () => {
                     <p className='user'>Name</p>
                 </header>
                 <div className='searchbar'>
-                    <input className='input' placeholder='mon...' onChange={searchHandler}></input>
+                    <input className='input' placeholder='...' onChange={searchHandler}></input>
                 </div>
             
                 <ul className='container'>
