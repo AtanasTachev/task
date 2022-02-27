@@ -1,5 +1,5 @@
 header.name {
-    height: 4rem;
+    height: 6vh;
     position: absolute;
     width: 100vw;
     background-color: rgba(85, 83, 80, 0.835);
@@ -9,8 +9,10 @@ header.name {
 }
 
 p.user {
+    margin: 0;
+    padding: 0;
     color: azure; 
-    position: relative;
+    display: flex;
     margin-right: 3rem;
     font-size: 1.25rem;
 }
@@ -33,7 +35,7 @@ div.searchbar {
     display: flex;
     flex-direction: row;
     justify-items: auto;
-    top: 5rem;
+    top: 7vh;
     left: 35%;
     position: absolute;
 }

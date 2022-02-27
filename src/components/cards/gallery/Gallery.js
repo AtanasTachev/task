@@ -7,10 +7,9 @@ import * as cardServise from '../../../services/cardService';
 
 
 const Gallery = () => {
-    const [allAnimals, setAllAnimals] = useState([]);
+    const [allArticles, setAllArticles] = useState([]);
 
-    // const [firstHalf, setFirstHalf] = useState([]);
-    // const [secondHalf, setSecondHalf] = useState([]);
+
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
     // const [user, setUser] = useState();
@@ -18,45 +17,22 @@ const Gallery = () => {
     useEffect(() => {
         cardServise.getAll()
         .then(result => {
-            setAllAnimals(result);
+            setAllArticles(result);
         })
     }, []);
 
 
-    // useEffect(() => {
-    //     cardServise.getHalf()
-    //     .then(result => {
-    //         setFirstHalf(result);
-    //     })
-    // }, []);
-    // useEffect(() => {
-    //     cardServise.getHalf()
-    //     .then(result => {
-    //         setSecondHalf(result);
-    //     })
-    // }, []);
-
-    // const allAnimals = firstHalf.concat(secondHalf);
     
-    // let filtered = [];
-    
-    // let animalsText = allAnimals?.map(x => x.name.toLowerCase() + x.latin_name.toLowerCase() + x.animal_type.toLowerCase() + x.diet.toLowerCase());
-
-//    console.log(animalsText);
-//    let found = [];
-
-   if(allAnimals.length > 0) {
-       console.log(allAnimals);
+   if(allArticles.length > 0) {
+       console.log(allArticles);
    }
     const searchHandler = (e) => {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
-        let foundByName = allAnimals?.filter(x => {return x.name.search(inputText) != -1 } );
-        let foundByLatinName = allAnimals?.filter(x => {return x.latin_name.search(inputText) != -1 } );
-        let foundByAnimalType = allAnimals?.filter(x => {return x.animal_type.search(inputText) != -1 } );
-        let foundByDiet = allAnimals?.filter(x => {return x.diet.search(inputText) != -1 } );
+        let foundByTitle = allArticles?.filter(x => {return x.title.toLowerCase().search(inputText) != -1 } );
+        let foundBySummary = allArticles?.filter(x => {return x.summary.toLowerCase().search(inputText) != -1 } );
 
-        let result = foundByName.concat(foundByLatinName, foundByAnimalType, foundByDiet);
+        let result = foundByTitle.concat(foundBySummary);
         setFound(result);
     }
   
@@ -70,11 +46,11 @@ const Gallery = () => {
             <p className='user'>Name</p>
         </header>
         <div className='searchbar'>
-            <input className='input' placeholder='mon...' onChange={searchHandler}></input>
+            <input className='input' placeholder='...' onChange={searchHandler}></input>
         </div>
   
         <ul className='container'>
-          {found?.map(x => <SingleCard key={x.id} animal={x} />)}
+          {found?.map(x => <SingleCard key={x.id} article={x} />)}
         </ul>
         </>)
     } else {
@@ -84,24 +60,15 @@ const Gallery = () => {
                     <p className='user'>Name</p>
                 </header>
                 <div className='searchbar'>
-                    <input className='input' placeholder='mon...' onChange={searchHandler}></input>
+                    <input className='input' placeholder='...' onChange={searchHandler}></input>
                 </div>
           
                 <ul className='container'>
-                  {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
+                  {allArticles?.map(x => <SingleCard key={x.id} article={x} />)}
                 </ul>
                 </>)
     }
-    //     {/* {found.length>0
-    //     ?(<ul className='container'>
-    //       {found?.map(x => <SingleCard key={x.id} animal={x} />)}
-    //     </ul>)
-    //      : ( <ul className='container'>
-    //          {allAnimals?.map(x => <SingleCard key={x.id} animal={x} />)}
-    //      </ul>)
-    //     } */}
-    // </>
-    // )
+
 };
 
 export default Gallery;
