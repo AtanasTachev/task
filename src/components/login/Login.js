@@ -45,7 +45,7 @@ const LoginButton = () => {
       onSuccess={onSuccess}
       onFailure={onFailure}
       uxMode='redirect'
-      redirectUri="http://localhost:3001/gallery"
+      redirectUri="http://localhost:3000/gallery"
       cookiePolicy={'single_host_origin'}
       isSignedIn={true}
 

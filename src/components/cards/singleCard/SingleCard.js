@@ -1,13 +1,13 @@
 import './singleCard.css';
 
-const SingleCard = ({article}) => {
-    console.log(article);
+const SingleCard = ({film}) => {
+
     return (
         <li className='single'>
-            <img src={article.imageUrl} />
-            <h3 className='title'>{article.title}</h3>
+            <img src={film.image} />
+            <h3 className='title'>{film.title}</h3>
             <p className='description'>
-                {article.summary}
+                {film.description}
             </p>
         </li>
     )
@@ -15,15 +15,3 @@ const SingleCard = ({article}) => {
 }
 
 export default SingleCard;
-
-{/* <img src={animal.image_link} />
-<h3 className='title'>{animal.name}</h3>
-<p className='description'>
-   <b>Latin name:</b>  {animal.latin_name}
-</p>
-<p className='description'>
-    <b>Animal type:</b> {animal.animal_type}
-</p>
-<p className='description'>
-    <b>Diet:</b> {animal.diet}
-</p> */}

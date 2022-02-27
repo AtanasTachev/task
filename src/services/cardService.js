@@ -1,13 +1,13 @@
 // const baseUrl = 'https://zoo-animal-api.herokuapp.com';
-const baseUrl = 'https://api.spaceflightnewsapi.net/v3/articles';
+const baseUrl = 'https://ghibliapi.herokuapp.com';
 
 export const getAll = async () => {
     try {
-        let response = await fetch(`${baseUrl}`, {mode:'cors'});
+        let response = await fetch(`${baseUrl}/films`, {mode:'cors'});
         // console.log(response);
-        let articles = await response.json();
+        let films = await response.json();
         // console.log(animals);
-        return articles;
+        return films;
     } catch (error) {
         console.log({message: error.message});
     }
