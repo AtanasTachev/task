@@ -12,6 +12,9 @@ const Gallery = () => {
     const [allArticles, setAllArticles] = useState([]);
 =======
     const [allFilms, setAllFilms] = useState([]);
+<<<<<<< HEAD
+>>>>>>> parent of 96ffc4d (fix search - finally working)
+=======
 >>>>>>> parent of 96ffc4d (fix search - finally working)
 
 
@@ -23,6 +26,9 @@ const Gallery = () => {
     const [user, setUser] = useState();
 
     const forseUpdate = useForceUpdate();
+<<<<<<< HEAD
+>>>>>>> parent of 96ffc4d (fix search - finally working)
+=======
 >>>>>>> parent of 96ffc4d (fix search - finally working)
 
     useEffect(() => {
@@ -34,6 +40,7 @@ const Gallery = () => {
 
 
     
+<<<<<<< HEAD
 <<<<<<< HEAD
    if(allArticles.length > 0) {
        console.log(allArticles);
@@ -74,6 +81,15 @@ const Gallery = () => {
     }
     
     const searchHandler = (e) => {
+=======
+    let sixteenFilms = allFilms.slice(0,16); 
+    
+    if(sixteenFilms.length > 0) {
+        console.log(sixteenFilms);
+    }
+    
+    const searchHandler = (e) => {
+>>>>>>> parent of 96ffc4d (fix search - finally working)
         e.preventDefault();
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
@@ -93,6 +109,9 @@ const Gallery = () => {
     console.log(found);
     
     if (found.length > 0) {
+<<<<<<< HEAD
+>>>>>>> parent of 96ffc4d (fix search - finally working)
+=======
 >>>>>>> parent of 96ffc4d (fix search - finally working)
         return (
             <>
@@ -100,6 +119,7 @@ const Gallery = () => {
                     <p className='user'>Name</p>
                 </header>
                 <div className='searchbar'>
+<<<<<<< HEAD
 <<<<<<< HEAD
                     <input className='input' placeholder='...' onChange={searchHandler}></input>
                 </div>
@@ -110,6 +130,8 @@ const Gallery = () => {
                 </>)
     }
 =======
+=======
+>>>>>>> parent of 96ffc4d (fix search - finally working)
                     <input className='input' placeholder='mon...' onChange={searchHandler}></input>
                 </div>
         
