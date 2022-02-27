@@ -1,6 +1,7 @@
+// import { lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import LoginButton from '../src/components/login/Login';
-import Gallery from './components/cards/gallery/Gallery';
+import Gallery from './components/cards/gallery/Gallery.js';
 import './App.css';
 import Logout from './components/logout/Logout.js';
 import { AuthProvider } from './contexts/AuthContext'
