@@ -13,8 +13,27 @@ const Gallery = () => {
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
 
-    // const  { user } = useContext( AuthContext );
-    const user = localStorage.getItem('user');
+    const [loginData, setLoginData] = useState(
+        localStorage.getItem('loginData')
+          ? JSON.parse(localStorage.getItem('loginData'))
+          : null
+      );
+    //   const getUser = async () => {
+    //     const res = await fetch('/api/google-login', {
+    //       method: 'GET',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     });
+    
+    //     const data = await res.json();
+    //     localStorage.getItem('loginData', JSON.parse(data));
+    //     return await setLoginData(data)
+    //   };
+
+    //   const user = getUser();
+    // const user = loginData.name;
+    const user = undefined
 
     useEffect(() => {
         cardServise.getAll()
