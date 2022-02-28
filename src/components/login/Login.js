@@ -2,47 +2,61 @@ import './login.css'
 import React, { useEffect, useState, useContext } from "react";
 import { GoogleLogin } from 'react-google-login';
 // import ls from 'local-storage';
-import { AuthContext } from '../../contexts/AuthContext';
+// import { AuthContext } from '../../contexts/AuthContext';
 // import * as userService from '../../services/userService'
-
-const clientId = '415229235264-hodh11mdmqdi1dag1kiugrhnr7uv3sjf.apps.googleusercontent.com';
-            
+           
 
 const LoginButton = () => {
   
-  const [user, setUser] = useState();
-  
-  const {login} = useContext(AuthContext); 
-  // console.log(login);
+  const [loginData, setLoginData] = useState(
+    localStorage.getItem('loginData')
+      ? JSON.parse(localStorage.getItem('loginData'))
+      : null
+  );
 
-  
-  const onSuccess = (res) => {
-    console.log('[Login Success] currentUser:', res.profileObj);
-    setUser(res.profileObj.name);
+  const handleFailure = (result) => {
+    alert(result);
+  };
+
+  const handleLogin = async (googleData) => {
+    const res = await fetch('/api/google-login', {
+      method: 'POST',
+      body: JSON.stringify({
+        token: googleData.tokenId,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await res.json();
+    setLoginData(data);
+    localStorage.setItem('loginData', JSON.stringify(data));
+  };
+  const handleLogout = () => {
+    localStorage.removeItem('loginData');
+    setLoginData(null);
   };
   
-  // console.log(user);
-  useEffect( async() => {
-    try {
-      await login(user);
-    } catch (error) {
-      console.log({message : error.message});
-    }
-      // localStorage.setItem('user', user); 
-    }, [user])
+  // const onSuccess = async(res) => {
+  //   console.log('[Login Success] currentUser:', res.profileObj);
+  //   await setUser(res.profileObj.name);
+  // };
+  
+  // // console.log(user);
     
 
-  const onFailure = (res) => {
-    console.log('[Login Failure] res:' , res);
-  } 
+  // const onFailure = (res) => {
+  //   console.log('[Login Failure] res:' , res);
+  // } 
 
   return (
     <div className="login__button">
       <GoogleLogin
-      clientId={clientId}
+      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
       buttonText={'Login'}
-      onSuccess={onSuccess}
-      onFailure={onFailure}
+      onSuccess={handleLogin}
+      onFailure={handleFailure}
       uxMode='redirect'
       redirectUri="http://localhost:3000/gallery"
       cookiePolicy={'single_host_origin'}
