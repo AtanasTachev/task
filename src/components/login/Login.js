@@ -1,10 +1,7 @@
 import './login.css'
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import { GoogleLogin } from 'react-google-login';
-// import ls from 'local-storage';
-// import { AuthContext } from '../../contexts/AuthContext';
-// import * as userService from '../../services/userService'
-           
+   
 
 const LoginButton = () => {
   
@@ -52,21 +49,26 @@ const LoginButton = () => {
 
   return (
     <div className="login__button">
-      <GoogleLogin
-      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-      buttonText={'Login'}
-      onSuccess={handleLogin}
-      onFailure={handleFailure}
-      uxMode='redirect'
-      redirectUri="http://localhost:3000/gallery"
-      cookiePolicy={'single_host_origin'}
-      isSignedIn={true}
+       {loginData ? (
+            <div>
+              <h3>You logged in as {loginData.email}</h3>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          ) : (
+            <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+            buttonText={'Login'}
+            onSuccess={handleLogin}
+            onFailure={handleFailure}
+            uxMode='redirect'
+            redirectUri="http://localhost:3000/gallery"
+            cookiePolicy={'single_host_origin'}
+            isSignedIn={true} 
 
-/>
+      />)
+          }
     </div>
   )
-
-  // return <button className="login__button"><a href="https://accounts.google.com/servicelogin/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin">LOGIN</a></button>;
 };
 
 export default LoginButton;
