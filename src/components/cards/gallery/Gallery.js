@@ -1,21 +1,24 @@
-
 import './gallery.css';
 import SingleCard from '../singleCard/SingleCard';
 import { useEffect, useState } from 'react';
-
+import { user } from '../../../contexts/AuthContext'
 
 import * as cardServise from '../../../services/cardService';
-// import * as userServise from '../../../services/userService';
 
 
 const Gallery = () => {
     const [allFilms, setAllFilms] = useState([]);
-
-
+    
+    
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
-    const [user, setUser] = useState();
-
+    const [user, setUser] = useState('');
+    
+    const name = localStorage.getItem('user');
+    if(name) {
+        setUser(name);
+    }
+    
 
     useEffect(() => {
         cardServise.getAll()
@@ -54,7 +57,7 @@ const Gallery = () => {
         return (
             <>
                 <header className='name'>
-                    <p className='user'>Name</p>
+                    <p className='user'>{user}</p>
                 </header>
                 <div className='searchbar'>
                     <input className='input' placeholder='...' onChange={searchHandler}></input>
@@ -68,7 +71,7 @@ const Gallery = () => {
             return (
             <>
                 <header className='name'>
-                    <p className='user'>Name</p>
+                    <p className='user'>{user}</p>
                 </header>
                 <div className='searchbar'>
                     <input className='input' placeholder='...' onChange={searchHandler}></input>
