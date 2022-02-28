@@ -3,9 +3,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 export const AuthContext = createContext();
 
-const initialAuthState = {
-    name: ''
-  };
+const initialAuthState = {user: ''};
 
   export const AuthProvider = ({
     children
@@ -16,20 +14,20 @@ const initialAuthState = {
         setUser(authData);
     }
     
-    const logout = () => {
-      setUser(initialAuthState)
-    };
+    // const logout = () => {
+    //   setUser(initialAuthState)
+    // };
 
-    const isAuth = Boolean(user.email);
+    // const isAuth = Boolean(user.email);
 
     return (
-        <AuthContext.Provider value = {{ user, login, logout, isAuthenticated: isAuth}}>
+        <AuthContext.Provider value = {{login, user}}>
             {children}
         </AuthContext.Provider>
     )
 }
 
-export const useAuth = () => {
-    const authState = useContext(AuthContext);
-    return authState;
-}
+// export const useAuth = () => {
+//     const authState = useContext(AuthContext);
+//     return authState;
+// }

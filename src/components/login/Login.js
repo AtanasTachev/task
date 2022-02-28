@@ -10,28 +10,26 @@ const clientId = '415229235264-hodh11mdmqdi1dag1kiugrhnr7uv3sjf.apps.googleuserc
 
 const LoginButton = () => {
   
-  // const [user, setUser] = useState('');
+  const [user, setUser] = useState();
   
-  const { login } = useContext(AuthContext); 
+  const {login} = useContext(AuthContext); 
+  // console.log(login);
 
-  // useEffect( async () => {
-  //     await localStorage.setItem('user', user); 
-  //   }, [user])
-
+  
   const onSuccess = (res) => {
     console.log('[Login Success] currentUser:', res.profileObj);
-      // setUser(res.profileObj.name);
-      // ls('user', res.profileObj.name);
-      // console.log(res.profileObj.name);
-      login(res.profileObj.name);
-      // setUser(res.profileObj.name);
-      // localStorage.setItem('user', res.profileObj.name);
-    };
-    // console.log(user);
-
-    // const addToLocal = (e) => {
-
-    // } 
+    setUser(res.profileObj.name);
+  };
+  
+  // console.log(user);
+  useEffect( async() => {
+    try {
+      await login(user);
+    } catch (error) {
+      console.log({message : error.message});
+    }
+      // localStorage.setItem('user', user); 
+    }, [user])
     
 
   const onFailure = (res) => {
@@ -43,7 +41,6 @@ const LoginButton = () => {
       <GoogleLogin
       clientId={clientId}
       buttonText={'Login'}
-      // onClick={addToLocal}
       onSuccess={onSuccess}
       onFailure={onFailure}
       uxMode='redirect'

@@ -10,6 +10,7 @@ header.name {
 
 p.user {
     margin: 0;
+    margin-top: 0.5rem;
     padding: 0;
     color: azure; 
     display: flex;

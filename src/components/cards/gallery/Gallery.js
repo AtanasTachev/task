@@ -1,7 +1,7 @@
 import './gallery.css';
 import SingleCard from '../singleCard/SingleCard';
-import { useEffect, useState } from 'react';
-import { user } from '../../../contexts/AuthContext'
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../contexts/AuthContext'
 
 import * as cardServise from '../../../services/cardService';
 
@@ -12,12 +12,18 @@ const Gallery = () => {
     
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
-    const [user, setUser] = useState('');
+
+    const { user } = useContext( AuthContext );
+
+    // const user = login();
+
+    // const [user, setUser] = useState('');
     
-    const name = localStorage.getItem('user');
-    if(name) {
-        setUser(name);
-    }
+    // const name = localStorage.getItem('user');
+    // if(name) {
+    //     // setUser(name);
+    //     console.log(name);
+    // }
     
 
     useEffect(() => {

@@ -3,23 +3,27 @@ import LoginButton from '../src/components/login/Login';
 import Gallery from './components/cards/gallery/Gallery';
 import './App.css';
 import Logout from './components/logout/Logout.js';
-import { AuthProvider } from './contexts/AuthContext'
+import { AuthProvider } from './contexts/AuthContext';
+import ErrorBoundary from './components/ErrorBoudary';
 
 
 function App() {
   return (
     <div className="App">
-      <AuthProvider>
+      <ErrorBoundary>
 
-        <Router>
-          <Routes>
-            <Route path="/" element={<LoginButton />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/logout" element={<Logout />} />
-          </Routes>
-        </Router>
+        <AuthProvider>
 
-      </AuthProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<LoginButton />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/logout" element={<Logout />} />
+            </Routes>
+          </Router>
+
+        </AuthProvider>
+      </ErrorBoundary>
     </div>
   );
 }
