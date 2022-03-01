@@ -30,7 +30,7 @@ const Gallery = () => {
     //   const user = getUser();
     //   console.log(user);
     // const user = loginData.name;
-    const user = undefined
+    const user = undefined;  
 
     useEffect(() => {
         cardServise.getAll()
@@ -70,7 +70,7 @@ const Gallery = () => {
         return (
             <>
                 <header className='name'>
-                    <p className='user'>{loginData.name}</p>
+                    <p className='user'>{user}</p>
                     <GoogleLogin
                         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         buttonText={'Logout'}
