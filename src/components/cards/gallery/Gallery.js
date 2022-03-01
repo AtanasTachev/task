@@ -1,6 +1,7 @@
 import './gallery.css';
 import SingleCard from '../singleCard/SingleCard';
 import { useContext, useEffect, useState } from 'react';
+import { GoogleLogin } from 'react-google-login';
 // import { AuthContext } from '../../../contexts/AuthContext'
 
 import * as cardServise from '../../../services/cardService';
@@ -19,19 +20,15 @@ const Gallery = () => {
           : null
       );
     //   const getUser = async () => {
-    //     const res = await fetch('/api/google-login', {
-    //       method: 'GET',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     });
-    
+    //     const res = await fetch('/api/google-login');
     //     const data = await res.json();
-    //     localStorage.getItem('loginData', JSON.parse(data));
-    //     return await setLoginData(data)
+    //     console.log(data);
+    //     // localStorage.getItem('loginData', JSON.parse(data));
+    //     setLoginData(data)
     //   };
 
     //   const user = getUser();
+    //   console.log(user);
     // const user = loginData.name;
     const user = undefined
 
@@ -44,7 +41,10 @@ const Gallery = () => {
     
     let sixteenFilms = allFilms.slice(0,16); 
     
-
+    const handleLogout = () => {
+        localStorage.removeItem('loginData');
+        setLoginData(null);
+      };
     
     const searchHandler = (e) => {
         e.preventDefault();
@@ -63,8 +63,6 @@ const Gallery = () => {
         },[]);
 
         setFound(uniqueElements);    
-   
-    
     }
     
     
@@ -72,7 +70,15 @@ const Gallery = () => {
         return (
             <>
                 <header className='name'>
-                    <p className='user'>{user}</p>
+                    <p className='user'>{loginData.name}</p>
+                    <GoogleLogin
+                        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                        buttonText={'Logout'}
+                        uxMode='redirect'
+                        redirectUri="http://localhost:3000"
+                        cookiePolicy={'single_host_origin'}
+                        onClick={handleLogout}
+                    ></GoogleLogin>
                 </header>
                 <div className='searchbar'>
                     <input className='input' placeholder='...' onChange={searchHandler}></input>
@@ -87,6 +93,14 @@ const Gallery = () => {
             <>
                 <header className='name'>
                     <p className='user'>{user}</p>
+                    <GoogleLogin
+                        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                        buttonText={'Logout'}
+                        uxMode='redirect'
+                        redirectUri="http://localhost:3000"
+                        cookiePolicy={'single_host_origin'}
+                        onClick={handleLogout}
+                    ></GoogleLogin>
                 </header>
                 <div className='searchbar'>
                     <input className='input' placeholder='...' onChange={searchHandler}></input>

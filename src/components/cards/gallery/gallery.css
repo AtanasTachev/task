@@ -14,8 +14,7 @@ p.user {
     padding: 0;
     color: azure; 
     display: flex;
-    margin-right: 3rem;
-    font-size: 1.25rem;
+    font-size: 0.75rem;
 }
 
 ul.container {

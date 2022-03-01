@@ -50,8 +50,8 @@ const LoginButton = () => {
   return (
     <div className="login__button">
        {loginData ? (
-            <div>
-              <h3>You logged in as {loginData.email}</h3>
+            <div className='center'>
+              <h6>You logged in as {loginData.email}</h6>
               <button onClick={handleLogout}>Logout</button>
             </div>
           ) : (
