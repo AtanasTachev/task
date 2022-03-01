@@ -30,7 +30,7 @@ const Gallery = () => {
     //   const user = getUser();
     //   console.log(user);
     // const user = loginData.name;
-    const user = undefined;  
+    const user = 'NAME in GOOGLE';  
 
     useEffect(() => {
         cardServise.getAll()
