@@ -2,14 +2,15 @@ import './gallery.css';
 import SingleCard from '../singleCard/SingleCard';
 import { useContext, useEffect, useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
-// import { AuthContext } from '../../../contexts/AuthContext'
+import { AuthContext } from '../../../contexts/AuthContext'
 
 import * as cardServise from '../../../services/cardService';
 
 
 const Gallery = () => {
     const [allFilms, setAllFilms] = useState([]);
-    
+
+    // const user = localStorage.getItem('loginData').name;
     
     const [inputText, setInputText] = useState('');
     const [found, setFound] = useState([]);
@@ -50,8 +51,8 @@ const Gallery = () => {
         e.preventDefault();
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
-        let foundByTitle = sixteenFilms?.filter(x => {return x.title.toLowerCase().search(inputText) != -1 } );
-        let foundByDescription = sixteenFilms?.filter(x => {return x.description.split('.').slice(0,2).join(' ').toLowerCase().search(inputText) != -1 } );
+        let foundByTitle = sixteenFilms?.filter(x => {return x.title.toLowerCase().search(inputText) !== -1 } );
+        let foundByDescription = sixteenFilms?.filter(x => {return x.description.split('.').slice(0,2).join(' ').toLowerCase().search(inputText) !== -1 } );
         
 
         let result = foundByTitle.concat(foundByDescription);
